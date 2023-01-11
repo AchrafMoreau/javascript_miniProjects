@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(rgb(0, 255, 242), rgb(4, 4, 90));
+        height: 100vh;
+    }
+    .container{
+        background-image: linear-gradient(rgb(4, 4, 90), rgb(0, 255, 242));
+        height: 30vh;
+        width: 30%;
+        border-radius: 30px;
+        overflow: auto;
+        box-shadow: 0 0 10px ;
+    }
+    #timer{
+        text-align: center;
+        font-size: 4rem;
+        font-family: 'Arial';
+        margin: 0 auto;
+        padding: 30px;
+    }
+    .botons{
+        text-align: center;
+    }
+    button{
+        font-size: 2rem;
+        margin: 0 10px;
+        width: 50px;
+        height: 50px;
+        padding-top: 4px;
+    }
+    .play-btn{
+        background-color: transparent;
+        border: black;
+        border-radius: 10px;
+        box-shadow: 0 0 10px green;
+        transition: 0.5s;
+    }
+    .play-btn:hover{
+        background-color: #204606; 
+        border: none; 
+        color: #4ce0e0;  
+    }
+    .play-btn:active{
+        transform: scale(.8);
+    }
+    .reset-btn{
+        background-color: transparent;
+        border: black;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #e06b26;
+        transition: 0.5s;
+    }
+    .reset-btn:hover{
+        background-color: #e06b26;
+        border: none;
+        color: #4ce0e0;  
+    }
+    .reset-btn:active{
+        transform: scale(.8);
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="timer">
+            00:00:00
+        </div>
+        <div class="botons">
+            <button class="play-btn">
+                <i class="fa-solid fa-play" id="play"></i>
+            </button>
+            <button class="reset-btn">
+                <i class="fa-solid fa-arrow-rotate-left" id="reset"></i>
+            </button>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/5fff77269d.js" crossorigin="anonymous"></script>
+    <script>
+        let playbtn = document.querySelector(".play-btn");
+        let reset = document.querySelector(".reset-btn");
+
+        let seconds = 0;
+        let minites = 0;
+        let hours = 0;
+        leadingSecond = 0;
+        leadingMinites = 0;
+        leadingHours = 0;
+
+        let btn_status = "stopped";
+        let invertime = null;
+
+        function timer(){
+            seconds++;
+            if(seconds /60 === 1){
+                seconds = 0;
+                minites++;
+                if(minites /60 === 1){
+                    minites = 0;
+                    hours++
+                }
+            }
+            if(seconds < 10){
+                leadingSecond = "0" + seconds.toString();
+            }else{
+                leadingSecond = seconds;
+            }
+            if(minites < 10){
+                leadingMinites = "0" + minites.toString();
+            }else{
+                leadingMinites = minites;
+            }
+            if(hours < 10){
+                leadingHours = "0" + hours.toString();
+            }else{
+                leadingHours = hours;
+            }
+
+            let stopplay = document.getElementById('timer')
+            stopplay.innerText = leadingHours + ":" + leadingMinites + ":" + leadingSecond;
+        }
+        playbtn.addEventListener('click', function(){
+            let htmlcontent = document.querySelector(".play-btn")
+            if(btn_status === 'stopped'){
+                invertime = window.setInterval(timer, 1000);
+                htmlcontent.innerHTML = `<i class="fa-solid fa-pause" id="play"></i>`;
+                btn_status = "played";
+            }else{
+                window.clearInterval(invertime);
+                htmlcontent.innerHTML = `<i class="fa-solid fa-play" id="play"></i>`;
+                btn_status = "stopped";
+            }
+        });
+        
+        reset.addEventListener('click', function(){
+            window.clearInterval(invertime);
+            seconds = 0;
+            hours = 0;
+            minites = 0;
+
+            document.getElementById('timer').innerText = "00:00:00";
+        })
+        
+    </script>
+</body>
+</html>

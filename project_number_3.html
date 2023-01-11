@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url(./115817.jpg) no-repeat center center/cover;
+    }
+    .container{
+        background-color: rgb(47, 35, 59);
+        width: 50%;
+        border-radius: 20px;
+        padding: 20px;
+        color: aliceblue;
+    }
+    .container > h2{
+        text-align: center;
+    }
+    .container .Question {
+        padding-top: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid black;
+        font-size: 1.2rem;
+        transition: .5s;
+    }
+    .container .section .answer{
+        padding-bottom: 5px;
+        margin-top: 5px;
+        line-height: 1.4;
+        height: 0;
+        overflow: hidden;
+        transition: .5s;
+    }
+    .container .section .Question::after{
+        content: "+";
+        float: right;
+        font-size: 1.5rem;
+        transition: 0.5s;
+    }
+    .container .section.active .answer{
+        height: 100px;
+    }
+    .container .section.active .Question{
+        font-size: 0.9rem;
+    }
+    .container .section.active .Question::after{
+        transform: rotate(180deg);
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Those are some Questions that u may Can answer ?</h2>
+        <div class="section">
+            <div class="Question">What is the main role of the United States Congress ?</div>
+            <div class="answer">The main role of the United States Congress is to legislate, or make laws, for the country. Congress is responsible for representing the interests of the people, conducting oversight of the executive branch of government, and appropriating money to fund the government's operations.</div>
+        </div>
+        <div class="section">
+            <div class="Question">What is the function of the Supreme Court in the United States?</div>
+            <div class="answer">The function of the Supreme Court in the United States is to interpret the Constitution and federal laws, and to ensure that they are applied consistently across the country. The Supreme Court is the highest court in the land, and its decisions are final and binding on all other courts in the United States.</div>
+        </div>
+        <div class="section">
+            <div class="Question">What is the role of the President in the United States government?</div>
+            <div class="answer">The President of the United States is the head of the executive branch of the federal government and is responsible for enforcing the laws of the country. The President is also the commander-in-chief of the military, and has the power to negotiate treaties and make appointments to federal government positions, including judgeships. The President is elected to a four-year term by the people of the United States through the Electoral College.</div>
+        </div>
+    </div>
+    <script>
+        let section = document.querySelectorAll('.section'); 
+
+        section.forEach(elm => {
+            elm.addEventListener('click', function(){
+                this.classList.toggle('active');
+            })
+        })
+    </script>
+</body>
+</html>
