@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    *{
+       /*border: 1px solid red;*/
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        background-color: #0b2136;
+    }
+    body::after{
+        content: " ";
+        position:absolute;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(192, 68, 128, .5);
+        box-shadow: 0px 0px 500px 300px rgb(192, 68, 128, .3);
+        z-index: -100;
+    }
+    body::before{
+        content: '';
+        position: absolute;
+        color: aliceblue;
+        top: 0;
+        left: 0;
+        background-color: rgb(9, 69, 77);
+        box-shadow: 0 0 500px 300px rgb(9, 69, 77);
+        z-index: -100;
+    }
+    
+    .pages{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    a{
+        text-decoration: none;
+        text-align: center;
+        color: #7593ab;
+        font-size: 1.3rem;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        margin: auto;
+    }
+    .active{
+        border: 2px solid transparent;
+        background: linear-gradient(#0d273f, #0d273f) padding-box,
+        linear-gradient(to right, #674a8d, #c04480) border-box;
+        background-color: none;
+        color: #c04480;
+    }
+    .hero{
+        background-color: #0b2136;
+        box-shadow: 5px 5px 5px rgb(0, 0, 0,.5);
+        width: 80%;
+        margin: auto;
+    }
+    button{
+        font-size: 1.2rem;
+        background-color: transparent;
+        border: none;
+        height: 60px;
+        color:  #c04480;
+    }
+    .prev{
+        text-align: start;
+    }
+    .next{
+        text-align: end;
+    }
+    .header{
+        color: #7593ab;
+        margin: 10px 0;
+    }
+    .foter{
+        color: #7593ab;
+        margin: 10px 0;
+    }
+</style>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center header">
+                Section <span class="section"></span>
+            </div>
+        </div>
+        <div class="row hero">
+            <div class="col-sm-2 prev">
+                <button>Prev</button>
+            </div>
+            <div class="col-sm-8 pages">
+                <a href="#" class="sections">1</a>
+                <a href="#"class="sections">2</a>
+                <a href="#"class="sections">3</a>
+                <a href="#" class="sections">...</a>
+                <a href="#"class="sections">8</a>
+                <a href="#"class="sections">9</a>
+                <a href="#"class="sections" >11</a>
+                <a href="#"class="sections">12</a>
+                <a href="#"class="sections">13</a>
+                <a href="#"class="sections">14</a>
+            </div>
+            <div class="col-sm-2 next">
+                <button>Next</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center foter">
+                - 1441 items -
+            </div>
+        </div>
+    </div>
+    <script>
+        let sections = document.querySelectorAll('a');
+        let nextbtn = document.getElementById('next');
+        let prevbtn = document.getElementById('prev');
+        let numsection = document.querySelector('.section');
+        console.log(numsection);
+
+        sections.forEach(elm => {
+            elm.addEventListener('click', function(){
+                sections.forEach(span => {
+                    span.classList.remove('active');
+                    elm.classList.add('active');
+                })
+                numsection.textContent = elm.innerText;
+            })
+        })
+    </script>
+</body>
+</html>
