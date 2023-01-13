@@ -70,8 +70,13 @@
         font-size: 1.2rem;
         background-color: transparent;
         border: none;
-        height: 60px;
         color:  #c04480;
+        height: 60px;
+        border-radius: 20px;
+        transition: all 0.5s;
+    }
+    button:hover{
+        background-color: rgb(117, 147, 171, .3);
     }
     .prev{
         text-align: start;
@@ -134,10 +139,11 @@
                 sections.forEach(span => {
                     span.classList.remove('active');
                     elm.classList.add('active');
-                })
+                });
                 numsection.textContent = elm.innerText;
-            })
-        })
+            });
+        });
+
     </script>
 </body>
 </html>

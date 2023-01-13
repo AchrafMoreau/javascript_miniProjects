@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+       /*border: 1px solid red;*/
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        background-color: rgb(4, 27, 70);
+        color: aliceblue;
+    }
+    .header{
+        text-align: center;
+        font-family:'Lucida Sans', sans-serif;
+        font-size: 1.5rem;
+        line-height: .2;
+        margin-bottom: 50px;    
+    }
+    .inderline{
+        width: 150px;
+        background-color: aqua;
+        height: 3px;
+        margin: auto;
+    }
+    img{
+        border-radius:50%;
+        width: 130px;
+        height: 130px;
+    }
+    .body-card{
+
+        background-color: aliceblue;
+        color: black;
+        width: 60%;
+        text-align: center;
+        margin: auto;
+        border-radius: 10px;
+        padding:  2rem .5rem;
+    }
+    .name{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 1.3rem;
+        margin-bottom: 60px;
+
+    }
+    .job{
+        padding-bottom: -50px;
+        margin-top: -55px;
+        text-transform: uppercase;
+        color: rgb(0, 133, 133);
+        font-family: sans-serif;
+        font-size: .9rem;
+
+
+    }
+    p{
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .btns button{
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: rgb(0, 133, 133);
+        cursor: pointer;
+        transition: .5s;
+    }
+    .btns button:hover{
+        color: rgb(81, 0, 88);
+    }
+    .btns button:active{
+        transform: scale(.9);
+    }
+</style>
+<body>
+    <div class="container">
+        <main>
+            <div class="header">
+                <h1 class="title">Our Review</h1>
+                <div class="inderline"></div>
+            </div>
+            <div class="body-card">
+                <div>
+                    <img class="image" src="./115817.jpg" alt="">
+                </div>
+                <h2 class="name">Achraf Moreau</h2>
+                <h4 class="job">software developer</h4>
+                <p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.</p>
+                <div class="btns">
+                    <button class="prevbtn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="nextbtn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+    <script>
+        let data = [
+        {
+            img:"./115817.jpg",
+            name:"Ayoub Ladrassi",
+            job:"graphic design",
+            review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.'
+        },
+        {
+            img:"./mastercard.png",
+            name:"Kamal lhilali",
+            job:"software developer",
+            review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.'
+        },
+        {
+            img:"./visa.png",
+            name:"yassin jbali",
+            job:"soldier",
+            review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.'
+        },
+        {
+            img:"./mastercard.png",
+            name:"anass absa",
+            job:"programer",
+            review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.'
+        },
+        {
+            img:"./maistro.png",
+            name:"mohmd lbzagh",
+            job:"khdam",
+            review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus odio hic modi unde, perspiciatis alias maiores iure, similique excepturi iusto tenetur! Numquam beatae in enim suscipit eius cumque iure.'
+        }
+        ];
+        let img = document.querySelector('.image');
+        let name = document.querySelector('.name');
+        let job = document.querySelector('.job');
+        let review = document.querySelector('.review');
+        let nextbtn = document.querySelector('.nextbtn');
+        let prevbtn = document.querySelector('.prevbtn');
+        console.log(img)
+        let counter = 0;
+        nextbtn.addEventListener('click', function(){
+            counter++
+            if(counter > data.length-1){
+                counter =0;
+            }
+            let cunt = data[counter];
+            img.src = cunt.img;
+            name.innerText = cunt.name;
+            job.innerText = cunt.job;
+            review.innerText = cunt.review;
+
+        });
+        prevbtn.addEventListener('click', function(){
+            counter--
+            if(counter < 0){
+                counter = data.length -1;
+            }
+            let cunt = data[counter];
+            img.src = cunt.img;
+            name.innerText = cunt.name;
+            job.innerText = cunt.job;
+            review.innerText = cunt.review;
+
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/5fff77269d.js" crossorigin="anonymous"></script>
+</body>
+</html>
